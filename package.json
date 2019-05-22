@@ -1,7 +1,7 @@
 {
-  "name": "tpl_lib",
-  "version": "1.0.0",
-  "description": "",
+  "name": "<%=projectName%>",
+  "version": "<%=projectVersion%>",
+  "description": "<%=projectDescription%>",
   "main": "src/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=local BUILD_ENV=local webpack-dev-server --config build/webpack.config.js",
