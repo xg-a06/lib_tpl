@@ -51,7 +51,8 @@ const baseConfig = {
       template: resolve('demo/index.html'),
       filename: 'demo/index.html',
       inject: 'head',
-      minify: true
+      minify: true,
+      chunks: ['demo/test']
     }),
     new HappyPack({
       id: 'happy-babel',
