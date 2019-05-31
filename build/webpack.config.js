@@ -50,7 +50,7 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       template: resolve('demo/index.html'),
       filename: 'demo/index.html',
-      inject: 'head',
+      inject: 'body',
       minify: true,
       chunks: ['demo/test']
     }),
