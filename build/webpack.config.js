@@ -42,7 +42,7 @@ const baseConfig = {
       {
         test: /\.js?$/,
         loader: 'happypack/loader?id=happy-babel',
-        include: resolve('src')
+        include: include: [resolve('src'), resolve('demo')]
       }
     ]
   },
