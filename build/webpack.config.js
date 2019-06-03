@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: xg-a06
  * @Date: 2019-05-20 23:11:06
- * @LastEditTime: 2019-06-03 16:09:23
+ * @LastEditTime: 2019-06-03 16:09:34
  * @LastEditors: xg-a06
  */
 const path = require('path')
@@ -49,7 +49,7 @@ const baseConfig = {
       {
         test: /\.js?$/,
         loader: 'happypack/loader?id=happy-babel',
-        include: include: [resolve('src'), resolve('demo')]
+        include: [resolve('src'), resolve('demo')]
       }
     ]
   },
