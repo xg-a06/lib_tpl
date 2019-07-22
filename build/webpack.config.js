@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: xg-a06
  * @Date: 2019-05-20 23:11:06
- * @LastEditTime: 2019-06-03 16:09:34
+ * @LastEditTime: 2019-07-22 18:55:29
  * @LastEditors: xg-a06
  */
 const path = require('path')
@@ -88,6 +88,7 @@ module.exports = () => {
   let exConfig = {}
   if (process.env.NODE_ENV === 'local') {
     exConfig = {
+      <% if(esLint){ -%>
       module: {
         rules: [
           {
@@ -103,6 +104,7 @@ module.exports = () => {
           }
         ]
       },
+      <%} -%>
       devServer: config.devServer
     }
   } else {
