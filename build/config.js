@@ -1,16 +1,16 @@
-const path = require('path')
-
+const { resolve } = require('./tools');
 const config = {
   buildDetail: false,
   devServer: {
-    contentBase: path.resolve('dist'),
-    port: 2333,
+    contentBase: resolve('dist'),
+    port: 2233,
     open: true,
     hot: true,
-    index:'demo/index.html',
+    host: '0.0.0.0',
+    index: 'index.html',
     overlay: {
       errors: true,
-      warnings: true
+      warnings: true,
     },
     historyApiFallback: true,
     proxy: {
@@ -18,22 +18,22 @@ const config = {
         target: 'http://xxx.com',
         changeOrigin: true,
         pathRewrite: {
-          '^/xxx': '/'
-        }
-      }
-    }
+          '^/xxx': '/',
+        },
+      },
+    },
   },
   local: {
-    API_PATH: '/api'
+    API_PATH: '/api',
   },
   dev: {
-    API_PATH: '/api'
+    API_PATH: '/api',
   },
   test: {
-    API_PATH: '/api'
+    API_PATH: '/api',
   },
   prod: {
-    API_PATH: '/api'
-  }
-}
-module.exports = config
+    API_PATH: '/api',
+  },
+};
+module.exports = config;
