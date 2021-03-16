@@ -11,6 +11,8 @@ module.exports = {
         },
       },
     ],
+    <% if(language==='ts'){ %>'@babel/preset-typescript',
+    <%} %>
   ],
   plugins: [
     ['@babel/plugin-transform-runtime', { corejs: 3 }],
