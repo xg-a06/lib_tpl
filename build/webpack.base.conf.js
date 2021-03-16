@@ -12,7 +12,8 @@ const baseConfig = {
   mode: isProd ? 'production' : 'development',
   devtool: isProd ? false : 'source-map',
   entry: {
-    index: resolve('src/index.js'),
+    <% if(language==='js'){ %>index: resolve('src/index.js'),<%} %>
+    <% if(language==='ts'){ %>index: resolve('src/index.ts'),<%} %>
   },
   output: {
     filename: '[name].js',
@@ -21,7 +22,8 @@ const baseConfig = {
     libraryTarget: 'umd',
   },
   resolve: {
-    extensions: ['.js', '.json'],
+    <% if(language==='js'){ %>extensions: ['.js', '.json'],<%} %>
+    <% if(language==='ts'){ %>extensions: ['.ts', '.js', '.json'],<%} %>
     alias: {
       '@': resolve('src'),
     },
@@ -30,7 +32,8 @@ const baseConfig = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js?$/,
+        <% if(language==='js'){ %>test: /\.js?$/,<%} %>
+        <% if(language==='ts'){ %>test: /\.[t|j]s?$/,<%} %>
         // loader: 'babel-loader',
         use: [
           {
