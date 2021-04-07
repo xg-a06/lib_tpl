@@ -6,10 +6,14 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['airbnb-base'],
+  extends: [
+    'airbnb-base',
+    'plugin:prettier/recommended',
+    // 'prettier',
+  ],
   parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
   settings: {
@@ -20,6 +24,7 @@ module.exports = {
       },
     },
   },
+  plugins: ['prettier'],
   rules: {},
   globals: {},
 };
@@ -31,7 +36,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['airbnb-base'],
+  extends: [
+    'airbnb-base',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    // 'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -45,7 +55,10 @@ module.exports = {
       },
     },
   },
-  plugins: ['@typescript-eslint'],
-  rules: {},
+  plugins: ['@typescript-eslint', 'prettier'],
+  rules: {
+    '@typescript-eslint/no-var-requires': 0,
+  },
+  globals: {},
 };
 <%} %>
