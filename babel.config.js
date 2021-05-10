@@ -15,7 +15,7 @@ module.exports = {
     <%} %>
   ],
   plugins: [
-    ['@babel/plugin-transform-runtime', { corejs: 3 }],
+    ['@babel/plugin-transform-runtime', { corejs: 2 }],
     '@babel/plugin-proposal-class-static-block', // 必须在plugin-proposal-class-properties之前
     ['@babel/plugin-proposal-decorators', { legacy: true }], // 必须在plugin-proposal-class-properties之前
     ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
