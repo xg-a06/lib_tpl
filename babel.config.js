@@ -6,9 +6,9 @@ module.exports = {
         targets: 'chrome>=49',
         useBuiltIns: 'usage',
         corejs: {
-          version: 3,
+          version: 2,
           proposals: true, // 使用尚在“提议”阶段特性的 polyfill
-        },
+        }
       },
     ],
     <% if(language==='ts'){ %>'@babel/preset-typescript',
