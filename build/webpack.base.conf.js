@@ -1,11 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HappyPack = require('happypack');
-const os = require('os');
+const threadLoader = require('thread-loader');
 const config = require('./config');
 const { resolve, isProd } = require('./tools');
 const pkg = require('../package.json');
+
+threadLoader.warmup(
+  {
+    workers: 4,
+  },
+  ['babel-loader', '@babel/preset-env']
+);
 
 const baseConfig = {
   target: 'web',
@@ -25,23 +31,24 @@ const baseConfig = {
     <% if(language==='js'){ %>extensions: ['.js', '.json'],<%} %>
     <% if(language==='ts'){ %>extensions: ['.ts', '.js', '.json'],<%} %>
     alias: {
-      '@': resolve('src'),
+      '@src': resolve('src'),
     },
   },
   module: {
     rules: [
       {
-        enforce: 'pre',
         <% if(language==='js'){ %>test: /\.js?$/,<%} %>
         <% if(language==='ts'){ %>test: /\.[t|j]s?$/,<%} %>
         // loader: 'babel-loader',
         use: [
           {
-            loader: 'happypack/loader',
+            loader: 'thread-loader',
             options: {
-              id: 'happy-babel',
+              workers: 4,
             },
           },
+          'cache-loader',
+          'babel-loader?cacheDirectory=true',
         ],
         include: [resolve('src'), resolve('demo')],
       },
@@ -56,19 +63,6 @@ const baseConfig = {
     ],
   },
   plugins: [
-    new HappyPack({
-      id: 'happy-babel',
-      loaders: [
-        {
-          loader: 'babel-loader',
-          options: {
-            babelrc: true,
-            cacheDirectory: true,
-          },
-        },
-      ],
-      threadPool: HappyPack.ThreadPool({ size: os.cpus().length }),
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),

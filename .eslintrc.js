@@ -11,15 +11,15 @@ module.exports = {
     'plugin:prettier/recommended',
     // 'prettier',
   ],
-  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    parser: 'babel-eslint',
   },
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@', path.resolve('./src')]],
+        map: [['@src', path.resolve('./src')]],
         extensions: ['.js', '.jsx', '.json'],
       },
     },
@@ -42,22 +42,24 @@ module.exports = {
     'plugin:prettier/recommended',
     // 'prettier',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
+    parser: '@typescript-eslint/parser',
   },
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@', path.resolve('./src')]],
-        extensions: ['.js', '.jsx', '.json'],
+        map: [['@src', path.resolve('./src')]],
+        extensions: ['.ts', '.js', '.jsx', '.json'],
       },
     },
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
+    'import/extensions': 0,
+    'import/prefer-default-export': 0,
   },
   globals: {},
 };

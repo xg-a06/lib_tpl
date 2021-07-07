@@ -14,8 +14,8 @@
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod node build/build.js",
     <% if(language==='ts'){ %>"build:types": "tsc --emitDeclarationOnly",<%} %>
     <% if(esLint){ %>"lint": "eslint --ext .js --ext .jsx --ext .vue src/",
-    "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
-    <%} %>"server": "a06-server kill all && a06-server start -r ./dist -z -c"
+    "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",<%} %>
+    "server": "a06-server kill all && a06-server start -r ./dist -z -c"
   },
   "repository": {
     "type": "git",
@@ -73,7 +73,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     <% if(language==='ts'){ %>"@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",<%} %>
-    "prettier": "^2.2.1",
+    "prettier": "^2.2.1"
     <%} %>
   }
 }
